@@ -1,5 +1,5 @@
 [theme]
-; base16 - gruvbox dark, soft 
+; base16 - gruvbox dark, soft
 grey---- = #32302f
 grey--- = #3c3836
 grey-- = #504945
@@ -21,10 +21,10 @@ brown = #d65d0e
 [colors]
 background = ${theme.grey----}
 background-alt = ${theme.grey--}
-foreground = ${theme.tan++++} 
-foreground-alt = ${theme.tan++} 
-primary = ${theme.blue} 
-secondary = ${theme.aqua} 
+foreground = ${theme.tan++++}
+foreground-alt = ${theme.tan++}
+primary = ${theme.blue}
+secondary = ${theme.aqua}
 alert = ${theme.red}
 
 [bar/main]
@@ -50,10 +50,10 @@ module-margin-right = 2
 
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1 
+font-2 = siji:pixelsize=10;1
 
 modules-left = i3
-modules-right = filesystem pulseaudio xkeyboard memory cpu eth temperature date powermenu
+modules-right = filesystem pulseaudio xkeyboard memory cpu eth temperature date battery powermenu
 
 tray-position = right
 tray-padding = 2
@@ -130,7 +130,7 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary} 
+format-underline = ${colors.primary}
 label = %percentage:2%%
 
 [module/memory]
@@ -138,7 +138,7 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary} 
+format-underline = ${colors.primary}
 label = %percentage_used%%
 
 [module/eth]
@@ -146,7 +146,7 @@ type = internal/network
 interface = enp2s0
 interval = 3.0
 
-format-connected-underline = ${colors.primary} 
+format-connected-underline = ${colors.primary}
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
@@ -172,23 +172,23 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+sink =
 
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted = 🔇 muted
-label-muted-foreground = ${colors.background-alt} 
+label-muted-foreground = ${colors.background-alt}
 
 bar-volume-width = 10
 bar-volume-foreground-0 = ${theme.green}
 bar-volume-foreground-1 = ${theme.green}
-bar-volume-foreground-2 = ${theme.green} 
+bar-volume-foreground-2 = ${theme.green}
 bar-volume-foreground-3 = ${theme.green}
 bar-volume-foreground-4 = ${theme.green}
 bar-volume-foreground-5 = ${theme.orange}
-bar-volume-foreground-6 = ${theme.red} 
+bar-volume-foreground-6 = ${theme.red}
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
@@ -197,6 +197,39 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.primary}
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
