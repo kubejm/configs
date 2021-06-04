@@ -12,15 +12,21 @@ return require('packer').startup(function()
   -- git
   use 'junegunn/gv.vim' -- git commit browser
   use 'tpope/vim-fugitive' -- git wrapper
+  use { -- git signs
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }
+  }
 
   -- general language configuration
-  use 'dense-analysis/ale' -- ale linting
   use 'editorconfig/editorconfig-vim' -- EditorConfig plugin
   use 'neovim/nvim-lspconfig' -- common lsp configurations
   use 'nvim-lua/completion-nvim' -- auto-completion for lsp
   use 'scrooloose/nerdcommenter' -- comment functions
   use 'jxnblk/vim-mdx-js' -- mdx highlighting
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use 'nvim-treesitter/playground'
 
   -- language specific plugins
   use 'HerringtonDarkholme/yats.vim' -- yet another TypeScript syntax
@@ -38,7 +44,8 @@ return require('packer').startup(function()
   use 'scrooloose/nerdtree' -- file explorer
 
   -- aesthetics
-  use 'chriskempson/base16-vim' -- base16 color themes
+  use 'chriskempson/base16-vim' -- base16 theme
+  use 'kubejm/gruvbox-flat.nvim' -- gruvbox theme
   use 'hoob3rt/lualine.nvim' -- statusline
 
   -- misc
